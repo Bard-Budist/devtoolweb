@@ -1,0 +1,4 @@
+.scroll_y {
+  overflow-x: scroll;
+  text-overflow: clip;
+}
