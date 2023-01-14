@@ -73,7 +73,7 @@ const chartData: { items: MenuItemType[] } = {
         //         }
         //     ]
         // },
-        {
+        /*{
             id: 'dev',
             title: 'Dev Tools',
             type: 'group',
@@ -97,7 +97,7 @@ const chartData: { items: MenuItemType[] } = {
                 },
                 
             ]
-        },
+        },*/
         {
             id: 'bundles',
             title: 'Assets Bundles',
@@ -106,9 +106,17 @@ const chartData: { items: MenuItemType[] } = {
             children: [
                 {
                     id: 'dev-bundles',
-                    title: 'Bundles Interacciones',
+                    title: 'Bundles Prod',
                     type: 'item',
-                    url: '/bundles/interactions',
+                    url: '/bundles/upload-prod',
+                    classes: 'nav-item',
+                    icon: 'feather icon-book'
+                },
+                {
+                    id: 'dev-bundles',
+                    title: 'Bundles Dev',
+                    type: 'item',
+                    url: '/bundles/upload-dev',
                     classes: 'nav-item',
                     icon: 'feather icon-book'
                 }

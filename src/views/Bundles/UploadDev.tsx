@@ -9,7 +9,7 @@ import { writeText, readText } from '@tauri-apps/api/clipboard';
 import {useEffect} from "react";
 
 let dropzone: any;
-export const AssetsUpload = () => {
+export const AssetsUploadDev = () => {
     const [interaction, setInteraction] = React.useState("");
     const [season, setSeason] = React.useState("");
     const [history, setHistory] = React.useState("");
@@ -26,7 +26,7 @@ export const AssetsUpload = () => {
             icon: alert.type
         });
     };
-    
+
     let djsConfig = {
         addRemoveLinks: true,
         autoProcessQueue: false,
@@ -37,30 +37,30 @@ export const AssetsUpload = () => {
         postUrl: 'no-url',
     };
     const saveHistory = (lastSave: string) => {
-        let previousHistory = localStorage.getItem('history');
+        let previousHistory = localStorage.getItem('history-dev');
         if (previousHistory) {
             previousHistory += lastSave + '\n';
-            localStorage.setItem('history', previousHistory);
+            localStorage.setItem('history-dev', previousHistory);
             setHistory(previousHistory);
         } else {
-            localStorage.setItem('history', lastSave + '\n');
+            localStorage.setItem('history-dev', lastSave + '\n');
             setHistory(lastSave + '\n');
         }
     }
-    
+
     const eventHandlers = {
         init: (dz: any) => {
             dropzone = dz;
         },
         complete: (file: any) => {
             console.log(file)
-            
+
         },
         error: () => {
             sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'Ocurrio algo mal subiendo el bundle' });
         }
     };
-    
+
     const uploadS3 = () => {
         if (interaction === "" || season === "Selecione la temporada")
         {
@@ -73,7 +73,7 @@ export const AssetsUpload = () => {
                     console.log("Uploading " + dropzone.files[i].name);
                     s3.upload({
                         Body: dropzone.files[i],
-                        Key: `assetsbundles/${season}/interacions/${interaction}/${dropzone.files[i].name}`,
+                        Key: `assetsbundles/dev/${season}/interacions/${interaction}/${dropzone.files[i].name}`,
                         Bucket: "dev-update-manager"
                     }, (err :Error, data :any) => {
                         if (err)
@@ -82,8 +82,8 @@ export const AssetsUpload = () => {
                         } else
                         {
                             dropzone.emit("complete", dropzone.files[i]);
-                            writeText(`https://dev-update-manager.s3.amazonaws.com/assetsbundles/${season}/interacions/${interaction}/${dropzone.files[i].name}`).then(() => {
-                                saveHistory(`https://dev-update-manager.s3.amazonaws.com/assetsbundles/${season}/interacions/${interaction}/${dropzone.files[i].name}`)
+                            writeText(`https://dev-update-manager.s3.amazonaws.com/assetsbundles/dev/${season}/interacions/${interaction}/${dropzone.files[i].name}`).then(() => {
+                                saveHistory(`https://dev-update-manager.s3.amazonaws.com/assetsbundles/dev/${season}/interacions/${interaction}/${dropzone.files[i].name}`)
                                 sweetAlertHandler({ title: 'Nice!', type: 'success', text: 'Subido!, se ha copiado la url en el portapeles' });
                             });
                         }
@@ -96,14 +96,14 @@ export const AssetsUpload = () => {
             }
         }
     }
-    
+
     useEffect(() => {
-        const data = localStorage.getItem('history');
+        const data = localStorage.getItem('history-dev');
         if (data) {
             setHistory(data);
         }
     }, [])
-    
+
     return (
         <>
             <Row>
@@ -116,27 +116,28 @@ export const AssetsUpload = () => {
                             <Row>
                                 <Col md={6}>
                                     <Form.Group>
-                                        <Form.Label>Temporada</Form.Label>
+                                        <Form.Label>Ruta</Form.Label>
                                         <Form.Control as="select" onChange={event => {
                                             setSeason(event.target.value);
                                         }} value={season}>
-                                            <option>Selecione la temporada</option>
+                                            <option>Selecione ruta primaria</option>
                                             <option>T2</option>
                                             <option>T3</option>
                                             <option>T4</option>
                                             <option>T5</option>
                                             <option>T8</option>
                                             <option>T9</option>
+                                            <option>Manager</option>
                                         </Form.Control>
                                     </Form.Group>
                                 </Col>
                                 <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>Interaccion</Form.Label>
-                                        <Form.Control type="text" placeholder="Ejemplo: 3.1.1" value={interaction}
-                                        onChange={event => {
-                                            setInteraction(event.target.value);
-                                        }}/>
+                                        <Form.Control type="text" placeholder="Ejemplo: 3.1.1 y/o bundle_a" value={interaction}
+                                                      onChange={event => {
+                                                          setInteraction(event.target.value);
+                                                      }}/>
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -176,4 +177,4 @@ export const AssetsUpload = () => {
         </>
     );
 };
-export default AssetsUpload;
+export default AssetsUploadDev;

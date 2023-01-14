@@ -10,13 +10,15 @@ const DownloadCatalogPage = React.lazy(() => import('./views/Catalogo/Catalogo')
 const TopicsPage = React.lazy(() => import('./views/Topics/Topic'));
 const OptionsPage = React.lazy(() => import('./views/Exams/Options'));
 // Assets bundles
-const UploadBundlePage = React.lazy(() => import('./views/Bundles/Upload'));
+const UploadBundlePageDev = React.lazy(() => import('./views/Bundles/UploadDev'));
+const UploadBundlePageProd = React.lazy(() => import('./views/Bundles/UploadProd'));
 
 const routes: RouteObject[] = [
     { path: '/', exact: true, name: 'Sample Page', component: OtherSamplePage },
     { path: '/sample-page', exact: true, name: 'Sample Page', component: OtherSamplePage },
     { path: '/build/upload-dev', exact: true, name: 'Subir builds', component: UploadBuildPage },
-    { path: '/bundles/interactions', exact: true, name: 'Subir bundles interacciones', component: UploadBundlePage },
+    { path: '/bundles/upload-prod', exact: true, name: 'Subir bundles Produccion', component: UploadBundlePageProd },
+    { path: '/bundles/upload-dev', exact: true, name: 'Subir bundles Desarrollo', component: UploadBundlePageDev },
     { path: '/catalog/download', exact: true, name: 'Descargar Catalogo', component: DownloadCatalogPage },
     { path: '/exams/topics', exact: true, name: 'Temas', component: TopicsPage },
     { path: '/exams/options', exact: true, name: 'Opciones', component: OptionsPage }
