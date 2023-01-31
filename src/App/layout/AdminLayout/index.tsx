@@ -69,7 +69,7 @@ const AdminLayout = () => {
                     </div>
                 </div>
             </div>
-            {/*<Configuration />*/}
+
         </>
     );
 };

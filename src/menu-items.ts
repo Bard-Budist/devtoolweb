@@ -73,31 +73,30 @@ const chartData: { items: MenuItemType[] } = {
         //         }
         //     ]
         // },
-        /*{
-            id: 'dev',
-            title: 'Dev Tools',
+        {
+            id: 'utils',
+            title: 'Utilidades',
             type: 'group',
             icon: 'icon-award',
             children: [
                 {
-                    id: 'dev-checkpoint',
-                    title: 'Checkpoint',
+                    id: 'utils-checkpoint',
+                    title: 'Actualizar checkpoint',
                     type: 'item',
                     url: '/dev/checkpoint',
                     classes: 'nav-item',
                     icon: 'feather icon-award'
                 },
                 {
-                    id: 'exams-options',
-                    title: 'Optiones',
+                    id: 'utils-data-json',
+                    title: 'Crear JSON data',
                     type: 'item',
-                    url: '/exams/options',
+                    url: '/dev/checkpoint',
                     classes: 'nav-item',
-                    icon: 'feather icon-book'
+                    icon: 'feather icon-award'
                 },
-                
             ]
-        },*/
+        },
         {
             id: 'bundles',
             title: 'Assets Bundles',
@@ -105,7 +104,7 @@ const chartData: { items: MenuItemType[] } = {
             icon: 'icon-award',
             children: [
                 {
-                    id: 'dev-bundles',
+                    id: 'dev-bundles-prod',
                     title: 'Bundles Prod',
                     type: 'item',
                     url: '/bundles/upload-prod',
@@ -113,7 +112,7 @@ const chartData: { items: MenuItemType[] } = {
                     icon: 'feather icon-book'
                 },
                 {
-                    id: 'dev-bundles',
+                    id: 'dev-bundles-dev',
                     title: 'Bundles Dev',
                     type: 'item',
                     url: '/bundles/upload-dev',

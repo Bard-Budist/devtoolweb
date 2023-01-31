@@ -537,7 +537,7 @@ body.able-pro-dark {
         }
 
         .btn-primary {
-          background: darken($dark-layout,7%);
+          background: $purple-color;
           border-color: darken($dark-layout,7%);
         }
 
@@ -1759,5 +1759,10 @@ body.able-pro-dark {
     height: 4em;
   }
 
+}
+
+.btn-primary {
+  background: #699AF9;
+  border-color: darken($dark-layout,7%);
 }
 

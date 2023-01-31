@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteObject } from './route'
+import { RouteObject } from './route';
 
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 
@@ -14,8 +14,7 @@ const UploadBundlePageDev = React.lazy(() => import('./views/Bundles/UploadDev')
 const UploadBundlePageProd = React.lazy(() => import('./views/Bundles/UploadProd'));
 
 const routes: RouteObject[] = [
-    { path: '/', exact: true, name: 'Sample Page', component: OtherSamplePage },
-    { path: '/sample-page', exact: true, name: 'Sample Page', component: OtherSamplePage },
+    { path: '/home', exact: true, name: 'Sample Page', component: OtherSamplePage },
     { path: '/build/upload-dev', exact: true, name: 'Subir builds', component: UploadBuildPage },
     { path: '/bundles/upload-prod', exact: true, name: 'Subir bundles Produccion', component: UploadBundlePageProd },
     { path: '/bundles/upload-dev', exact: true, name: 'Subir bundles Desarrollo', component: UploadBundlePageDev },
