@@ -15,14 +15,22 @@ import { SetUser } from '../utils/user';
 const AdminLayout = lazy(() => import('./layout/AdminLayout'));
 
 const App = () => {
+    console.log(process.env.BACK_URL_PROD);
+
     const checkUserAuth = () => {
         const userJson = localStorage.getItem('user');
         if (userJson) {
             const user: UserData = JSON.parse(userJson);
-            api.post('auth/verify', { token: user.token }).then(() => {
-                SetUser(user);
-                console.log('User is logged in');
-            });
+            api.post('auth/verify', { token: user.token })
+                .then(() => {
+                    SetUser(user);
+                    console.log('User is logged in');
+                })
+                .catch(() => {
+                    localStorage.removeItem('user');
+                    console.log('User is not logged in');
+                    window.location.href = '/login';
+                });
         }
     };
 
@@ -53,12 +61,10 @@ const App = () => {
                     <Route path={routes.map((x) => x.path)}>
                         <AdminLayout />
                     </Route>
-
                 </Suspense>
             </ScrollToTop>
-            <div className='backdrop' />
+            <div className="backdrop" />
         </>
     );
 };
 export default App;
-

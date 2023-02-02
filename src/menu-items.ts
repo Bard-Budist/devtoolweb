@@ -83,7 +83,7 @@ const chartData: { items: MenuItemType[] } = {
                     id: 'utils-checkpoint',
                     title: 'Actualizar checkpoint',
                     type: 'item',
-                    url: '/dev/checkpoint',
+                    url: '/utilities/updatecheckpoint',
                     classes: 'nav-item',
                     icon: 'feather icon-award'
                 },
@@ -91,7 +91,7 @@ const chartData: { items: MenuItemType[] } = {
                     id: 'utils-data-json',
                     title: 'Crear JSON data',
                     type: 'item',
-                    url: '/dev/checkpoint',
+                    url: '/utilities/createJson',
                     classes: 'nav-item',
                     icon: 'feather icon-award'
                 },
