@@ -1,6 +1,6 @@
 import axios from "axios";
 import { UserData } from "../interfaces/UserInterfaces";
-import { ulrBackProd, ulrBackDev } from "../config-env";
+import { urlBack } from "../config-env";
 
 // Get token from local storage and return it
 const getToken = () => {
@@ -13,20 +13,14 @@ const getToken = () => {
 }
 
 export const api = axios.create({
-  baseURL: ulrBackProd
+  baseURL: urlBack
 });
 
 export const apiAuth = axios.create({
-  baseURL: ulrBackProd,
+  baseURL: urlBack,
   headers: {
     'access-token':getToken(),
   }
 });
 
-export const apiAuthDev = axios.create({
-  baseURL: ulrBackDev,
-  headers: {
-    'access-token':getToken(),
-  }
-});
 

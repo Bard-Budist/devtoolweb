@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Row, Col, Card, Button, Table, Form, CardDeck } from 'react-bootstrap';
-import { apiAuth, apiAuthDev } from '../../utils/api';
+import { Row, Col, Card, Button, Form, CardDeck } from 'react-bootstrap';
+import { apiAuth } from '../../utils/api';
 import { User } from '../../utils/user';
 import { ProductInterface } from './Interfaces/updateCheckpointInterfaces';
 import withReactContent from 'sweetalert2-react-content';
@@ -51,25 +51,15 @@ export const UpdateCheckpoint = () => {
             product: currentProduct,
             data: JSON.stringify(payloadCheckpoint)
         };
-        if (currentEnvironment === 'production') {
-            apiAuth
-                .put('/checkpoint-data/update', payloadBody)
-                .then((response) => {
-                    sweetAlertHandler({ title: 'Hecho!', type: 'success', text: 'Se ha actualizado el checkpoint' });
-                })
-                .catch((error) => {
-                    sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: error.message });
-                });
-        } else {
-            apiAuthDev
-                .put('/checkpoint-data/update-dev', payloadBody)
-                .then((response) => {
-                    sweetAlertHandler({ title: 'Hecho!', type: 'success', text: 'Se ha actualizado el checkpoint' });
-                })
-                .catch((error) => {
-                    sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: error.message });
-                });
-        }
+        apiAuth
+            .put('/checkpoint-data/update', payloadBody)
+            .then((response) => {
+                sweetAlertHandler({ title: 'Hecho!', type: 'success', text: 'Se ha actualizado el checkpoint' });
+            })
+            .catch((error) => {
+                sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: error.message });
+            });
+    
     };
 
     // parse checkpoint to list of integers
@@ -87,7 +77,7 @@ export const UpdateCheckpoint = () => {
             <Row>
                 <Col sm={12}>
                     <br />
-                    <h5 className="mt-4">Configuración</h5>
+                    <h5 className='mt-4'>Configuración</h5>
                     <CardDeck>
                         <Card>
                             <Card.Header>
@@ -97,7 +87,7 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Temporada</Form.Label>
                                     <Form.Control
-                                        as="select"
+                                        as='select'
                                         value={currentEnvironment}
                                         onChange={(event) => {
                                             setCurrentEnvironment(event.target.value);
@@ -109,7 +99,7 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer>
-                                <small className="text-muted">Aquí debes poner a que entorno esta dirigido</small>
+                                <small className='text-muted'>Aquí debes poner a que entorno esta dirigido</small>
                             </Card.Footer>
                         </Card>
                         <Card>
@@ -120,7 +110,7 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Temporada</Form.Label>
                                     <Form.Control
-                                        as="select"
+                                        as='select'
                                         value={currentProduct}
                                         onChange={(event) => {
                                             setCurrentProduct(event.target.value);
@@ -134,13 +124,13 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer>
-                                <small className="text-muted">Tu producto al que actualizaras</small>
+                                <small className='text-muted'>Tu producto al que actualizaras</small>
                             </Card.Footer>
                         </Card>
                     </CardDeck>
                 </Col>
                 <Col sm={12}>
-                    <h5 className="mt-4">Checkpoint</h5>
+                    <h5 className='mt-4'>Checkpoint</h5>
                     <hr />
                     <CardDeck>
                         <Card>
@@ -151,8 +141,8 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Interacción</Form.Label>
                                     <Form.Control
-                                        type="text"
-                                        placeholder="Ejemplo: 3.1.1.1"
+                                        type='text'
+                                        placeholder='Ejemplo: 3.1.1.1'
                                         value={checkpoint}
                                         onChange={(event) => {
                                             setCheckpoint(event.target.value);
@@ -161,13 +151,13 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
 
-                            <Row className="text-center m-t-10">
+                            <Row className='text-center m-t-10'>
                                 <Col>
                                     <Button onClick={updateCheckpoint}>Subir</Button>
                                 </Col>
                             </Row>
                             <Card.Footer>
-                                <small className="text-muted">El primer numero corresponde a la temporada</small>
+                                <small className='text-muted'>El primer numero corresponde a la temporada</small>
                             </Card.Footer>
                         </Card>
                     </CardDeck>

@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Row, Col, Card, Button, Table, Form, CardDeck } from 'react-bootstrap';
-import { apiAuth, apiAuthDev } from '../../utils/api';
-import { User } from '../../utils/user';
+import { Row, Col, Card, Button, Form, CardDeck } from 'react-bootstrap';
+import { apiAuth } from '../../utils/api';
+import { GetUser } from '../../utils/user';
 import { ProductInterface } from './Interfaces/updateCheckpointInterfaces';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import { localDataDir, join } from '@tauri-apps/api/path';
+import { invoke } from '@tauri-apps/api/tauri'
+
 
 export const JsonCreateData = () => {
     const [products, setProducts] = React.useState<ProductInterface[]>([]);
-    const [checkpoint, setCheckpoint] = React.useState('');
     const [currentProduct, setCurrentProduct] = React.useState<string>('');
-    const [currentEnvironment, setCurrentEnvironment] = React.useState<string>('');
+  
 
     const sweetAlertHandler = (alert: {
         title: string;
@@ -26,11 +28,41 @@ export const JsonCreateData = () => {
     };
 
     React.useEffect(() => {
-        apiAuth.get('/user/products/' + User.id).then((response) => {
-            setProducts(response.data);
-        });
+        const user = GetUser();
+        if (user) {
+            apiAuth.get('/user/products/' + GetUser()?.id).then((response) => {
+                setProducts(response.data);
+            });
+        }  
     }, []);
 
+    // function to create json in path file
+    const createJson = () => {
+        const user = GetUser();
+        if (currentProduct === '') {
+            sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'Debes seleccionar un producto' });
+            return;
+        }
+        const payloadBody = {
+            id: user?.id,
+            product: currentProduct,
+            token: user?.token,
+            username: user?.username
+        };
+        // Create file
+        localDataDir().then((pathLocal: string) => {
+            const pathLocalSplited = pathLocal.split('\\');
+            join(pathLocalSplited[0], pathLocalSplited[1], pathLocalSplited[2], pathLocalSplited[3], 'LocalLow', 'Selecu', 'data.json').then((pathJoined: string) => {
+               invoke('save_json_file', { path: pathJoined, content: JSON.stringify(payloadBody)}).then(() => {
+                sweetAlertHandler({ title: 'Archivo creado', type: 'success', text: 'Se ha creado el archivo satisfactoriamente' });
+                }).catch((err) => {
+                    sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'No se ha podido crear el archivo' });
+                });
+            }).catch((err) => {
+                sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'No se ha podido crear el archivo' });
+            }); 
+        });
+    }
     return (
         <>
             <Row>
@@ -53,8 +85,8 @@ export const JsonCreateData = () => {
                                         }}
                                     >
                                         <option>Seleccione el producto</option>
-                                        {products.map((product) => {
-                                            return <option>{product.name}</option>;
+                                        {products.map((product, index) => {
+                                            return <option key={index}>{product.name}</option>;
                                         })}
                                     </Form.Control>
                                 </Form.Group>
@@ -70,7 +102,7 @@ export const JsonCreateData = () => {
                             <Card.Body>
                                 <Row className="text-center m-t-10">
                                     <Col>
-                                        <Button>Crear</Button>
+                                        <Button onClick={createJson}>Crear</Button>
                                     </Col>
                                 </Row>
                             </Card.Body>

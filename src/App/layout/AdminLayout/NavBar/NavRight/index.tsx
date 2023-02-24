@@ -8,6 +8,16 @@ import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
 interface NavRightProps {
     rtlLayout: boolean;
 }
+
+
+// Signout
+const signOut = (e: any) => {
+    e.preventDefault();
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+};
+
+
 const NavRight = (props: NavRightProps) => {
     return (
         <>
@@ -24,7 +34,7 @@ const NavRight = (props: NavRightProps) => {
                                     <a href={DEMO.BLANK_LINK} className="m-r-10">
                                         Marcar como leido
                                     </a>
-                                    <a href={DEMO.BLANK_LINK}>Limpiar todo</a>
+                                    <a href={DEMO.BLANK_LINK} onClick={signOut}>Cerrar sesion</a>
                                 </div>
                             </div>
                             <div style={{ height: '300px' }}>
@@ -37,12 +47,6 @@ const NavRight = (props: NavRightProps) => {
                                             <div className="media">
                                                 <img className="img-radius" src={Avatar1} alt="Generic placeholder" />
                                                 <div className="media-body">
-                                                    <p>
-                                                        <strong>Gio</strong>
-                                                        <span className="n-time text-muted">
-                                                            <i className="icon feather icon-clock m-r-10" />5 min
-                                                        </span>
-                                                    </p>
                                                     <p>Primer deploy</p>
                                                 </div>
                                             </div>

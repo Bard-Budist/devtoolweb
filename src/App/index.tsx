@@ -15,8 +15,6 @@ import { SetUser } from '../utils/user';
 const AdminLayout = lazy(() => import('./layout/AdminLayout'));
 
 const App = () => {
-    console.log(process.env.BACK_URL_PROD);
-
     const checkUserAuth = () => {
         const userJson = localStorage.getItem('user');
         if (userJson) {
@@ -24,12 +22,10 @@ const App = () => {
             api.post('auth/verify', { token: user.token })
                 .then(() => {
                     SetUser(user);
-                    console.log('User is logged in');
                 })
                 .catch(() => {
                     localStorage.removeItem('user');
                     console.log('User is not logged in');
-                    window.location.href = '/login';
                 });
         }
     };
@@ -63,7 +59,7 @@ const App = () => {
                     </Route>
                 </Suspense>
             </ScrollToTop>
-            <div className="backdrop" />
+            <div className='backdrop' />
         </>
     );
 };
