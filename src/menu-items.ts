@@ -17,62 +17,22 @@ export interface MenuItemType {
 }
 const chartData: { items: MenuItemType[] } = {
     items: [
-       /* {
-            id: 'dev',
-            title: 'Development',
+        {
+            id: 'user',
+            title: 'Usuario',
             type: 'group',
-            icon: 'icon-support',
+            icon: 'icon-award',
             children: [
                 {
-                    id: 'build-upload-dev',
-                    title: 'Builds',
+                    id: 'user-profile',
+                    title: 'Perfil',
                     type: 'item',
-                    url: '/build/upload-dev',
+                    url: '/user/profile',
                     classes: 'nav-item',
-                    icon: 'feather icon-sidebar'
-                }
-                ]
-        },*/
-        /*{
-            id: 'catalogo',
-            title: 'catalogo',
-            type: 'group',
-            icon: 'icon-support',
-            children: [
-                {
-                    id: 'catalogo-download',
-                    title: 'Descargar catalogo',
-                    type: 'item',
-                    url: '/catalog/download',
-                    classes: 'nav-item',
-                    icon: 'feather icon-sidebar'
-                }
+                    icon: 'feather icon-user'
+                },
             ]
-        },*/
-        // {
-        //     id: 'exams',
-        //     title: 'Examenes',
-        //     type: 'group',
-        //     icon: 'icon-award',
-        //     children: [
-        //         {
-        //             id: 'exams-topic',
-        //             title: 'Temas',
-        //             type: 'item',
-        //             url: '/exams/topics',
-        //             classes: 'nav-item',
-        //             icon: 'feather icon-award'
-        //         },
-        //         {
-        //             id: 'exams-options',
-        //             title: 'Optiones',
-        //             type: 'item',
-        //             url: '/exams/options',
-        //             classes: 'nav-item',
-        //             icon: 'feather icon-book'
-        //         }
-        //     ]
-        // },
+        },
         {
             id: 'utils',
             title: 'Utilidades',
@@ -95,6 +55,7 @@ const chartData: { items: MenuItemType[] } = {
                     classes: 'nav-item',
                     icon: 'feather icon-award'
                 },
+                
             ]
         },
         {
@@ -120,7 +81,7 @@ const chartData: { items: MenuItemType[] } = {
                     icon: 'feather icon-book'
                 }
             ]
-        }
+        },
     ]
     
 };

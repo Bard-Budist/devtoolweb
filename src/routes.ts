@@ -9,6 +9,7 @@ const DownloadCatalogPage = React.lazy(() => import('./views/Catalogo/Catalogo')
 // Utilities
 const UpdateCheckpoint = React.lazy(() => import('./views/Utilities/UpdateCheckpoint'));
 const CreateJson = React.lazy(() => import('./views/Utilities/JsonCreateData'));
+const Profile = React.lazy(() => import('./views/Profile/Profile'));
 // Assets bundles
 const UploadBundlePageDev = React.lazy(() => import('./views/Bundles/UploadDev'));
 const UploadBundlePageProd = React.lazy(() => import('./views/Bundles/UploadProd'));
@@ -21,6 +22,7 @@ const routes: RouteObject[] = [
     { path: '/bundles/upload-dev', exact: true, name: 'Subir bundles Desarrollo', component: UploadBundlePageDev },
     { path: '/catalog/download', exact: true, name: 'Descargar Catalogo', component: DownloadCatalogPage },
     { path: '/utilities/updatecheckpoint', exact: true, name: 'Actualizar Checkpoint', component: UpdateCheckpoint },
-    { path: '/utilities/createjson', exact: true, name: 'Crear Json data', component: CreateJson }
+    { path: '/utilities/createjson', exact: true, name: 'Crear Json data', component: CreateJson },
+    { path: '/user/profile', exact: true, name: 'Perfil', component: Profile }
 ];
 export default routes;

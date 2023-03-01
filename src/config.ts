@@ -1,5 +1,5 @@
 const Config = {
-    defaultPath: '/login',
+    defaultPath: '/',
     basename: '', // only at build time to set, like ///able-pro/react/default
     layout: 'vertical', // vertical, horizontal
     subLayout: '', // horizontal-2

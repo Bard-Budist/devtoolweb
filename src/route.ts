@@ -1,4 +1,5 @@
 import * as React from 'react';
+const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 export interface RouteObject {
     path: string;
     exact?: boolean;
@@ -9,7 +10,7 @@ export interface RouteObject {
 const Login = React.lazy(() => import('./views/Login/Login'));
 
 const route: RouteObject[] = [
-    { path: '/login', exact: true, name: 'login', component: Login },
+    { path: '/', exact: true, name: 'Default', component: Login},
 ];
 
 export default route;

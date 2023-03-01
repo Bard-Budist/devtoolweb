@@ -101,6 +101,11 @@ export const AssetsUploadDev = () => {
         }
     };
 
+    const cleanHistory = () => {
+        localStorage.removeItem('history-dev');
+        setHistory('');
+    };
+
     useEffect(() => {
         const data = localStorage.getItem('history-dev');
         if (data) {
@@ -133,6 +138,8 @@ export const AssetsUploadDev = () => {
                                             <option>T3</option>
                                             <option>T4</option>
                                             <option>T5</option>
+                                            <option>T6</option>
+                                            <option>T7</option>
                                             <option>T8</option>
                                             <option>T9</option>
                                             <option>Manager</option>
@@ -179,6 +186,9 @@ export const AssetsUploadDev = () => {
                     <Card>
                         <Card.Header>
                             <Card.Title as="h5">Historial</Card.Title>
+                            <button type="button" className="btn btn-primary btn-sm rounded m-0 float-right" onClick={cleanHistory}>
+                                <i className="feather icon-refresh-cw" />
+                            </button>
                         </Card.Header>
                         <Card.Body>
                             <Form.Control as="textarea" disabled={true} value={history} />

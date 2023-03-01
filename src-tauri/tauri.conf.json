@@ -3,12 +3,12 @@
   "build": {
     "beforeBuildCommand": "yarn run build",
     "beforeDevCommand": "yarn start",
-    "devPath": "http://localhost:3000",
+    "devPath": "http://localhost:3000/",
     "distDir": "../build"
   },
   "package": {
     "productName": "devtools",
-    "version": "0.1.0"
+    "version": "0.1.2"
   },
   "tauri": {
     "allowlist": {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../assets/scss/style.scss';
 import { api } from '../../utils/api';
+import { User } from '../../utils/user';
 import Breadcrumb from '../../App/layout/AdminLayout/Breadcrumb';
 import authLogo from '../../assets/images/auth/auth-logo.png';
 import PNotify from 'pnotify/dist/es/PNotify';
@@ -52,6 +53,15 @@ const Login = () => {
             }
         );
     };
+
+    React.useEffect(() => {
+        const userJson = localStorage.getItem('user');
+        if (!userJson) {
+            return;
+        } else {
+            window.location.href = '/home';
+        }
+    }, []);
 
     return (
         <>

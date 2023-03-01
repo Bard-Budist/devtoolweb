@@ -3,4 +3,5 @@ export interface UserData {
     roles: string;
     token: string;
     username: string;
+    hasData: boolean;
 }
