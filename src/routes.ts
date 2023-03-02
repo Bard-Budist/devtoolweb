@@ -13,6 +13,8 @@ const Profile = React.lazy(() => import('./views/Profile/Profile'));
 // Assets bundles
 const UploadBundlePageDev = React.lazy(() => import('./views/Bundles/UploadDev'));
 const UploadBundlePageProd = React.lazy(() => import('./views/Bundles/UploadProd'));
+// Users
+const LoadUsers = React.lazy(() => import('./views/Users/Load'));
 
 const routes: RouteObject[] = [
     // redirect
@@ -23,6 +25,7 @@ const routes: RouteObject[] = [
     { path: '/catalog/download', exact: true, name: 'Descargar Catalogo', component: DownloadCatalogPage },
     { path: '/utilities/updatecheckpoint', exact: true, name: 'Actualizar Checkpoint', component: UpdateCheckpoint },
     { path: '/utilities/createjson', exact: true, name: 'Crear Json data', component: CreateJson },
-    { path: '/user/profile', exact: true, name: 'Perfil', component: Profile }
+    { path: '/user/profile', exact: true, name: 'Perfil', component: Profile },
+    { path: '/user/load', exact: true, name: 'Carga usuarios', component: LoadUsers }
 ];
 export default routes;

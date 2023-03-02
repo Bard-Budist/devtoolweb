@@ -9,8 +9,10 @@ import DEMO from '../../../../../store/constant';
 import * as actionTypes from '../../../../../store/actions';
 import { useSelector } from '../../../../../store/reducer';
 import { MenuItemType } from '../../../../../menu-items';
+import { UserData } from '../../../../../interfaces/UserInterfaces';
 interface NavContentProps {
     navigation: MenuItemType[];
+    user?: UserData;
 }
 const NavContent = (props: NavContentProps) => {
     const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const NavContent = (props: NavContentProps) => {
         prevDisable: true,
         nextDisable: false
     });
+
     const scrollPrevHandler = () => {
         const sidenavWrapper = document.getElementById('sidenav-wrapper');
         if (sidenavWrapper) {
@@ -50,11 +53,12 @@ const NavContent = (props: NavContentProps) => {
         }
     };
     const navItems = props.navigation.map((item) => {
-        switch (item.type) {
-            case 'group':
-                return <NavGroup key={item.id} group={item} />;
-            default:
-                return false;
+        console.log(props.user && item.roles?.includes(props.user.roles));
+        if (item.type === 'group' && props.user && item.roles?.includes(props.user.roles)) {
+            console.log(item);
+            return <NavGroup key={item.id} group={item} />;
+        } else {
+            return false;
         }
     });
     let scrollStyle: { marginLeft?: string; marginRight?: string } = {

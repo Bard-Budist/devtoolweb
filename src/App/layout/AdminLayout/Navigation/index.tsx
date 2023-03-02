@@ -8,6 +8,8 @@ import OutsideClick from './OutsideClick';
 import * as actionTypes from './../../../../store/actions';
 import navigation from '../../../../menu-items';
 import { useSelector } from '../../../../store/reducer';
+import { GetUser } from '../../../../utils/user';
+import { UserData } from '../../../../interfaces/UserInterfaces';
 
 const Navigation = () => {
     const { windowWidth } = useWindowSize();
@@ -20,6 +22,7 @@ const Navigation = () => {
     const navFixedLayout = useSelector((state) => state.able.navFixedLayout);
     const headerFixedLayout = useSelector((state) => state.able.headerFixedLayout);
     const boxLayout = useSelector((state) => state.able.boxLayout);
+    const [user, setUser] = React.useState<UserData>();
 
     const onChangeLayout = (layout: string) => dispatch({ type: actionTypes.CHANGE_LAYOUT, layout: layout });
     const resize = () => {
@@ -31,9 +34,14 @@ const Navigation = () => {
             }
         }
     };
+    React.useEffect(() => {}, []);
     useEffect(() => {
         resize();
         window.addEventListener('resize', resize);
+        const user = GetUser();
+        if (user) {
+            setUser(user);
+        }
         return () => {
             window.removeEventListener('resize', resize);
         };
@@ -104,12 +112,12 @@ const Navigation = () => {
             {windowWidth < 992 ? (
                 <OutsideClick>
                     <div className="navbar-wrapper">
-                        <NavContent navigation={navigation.items} />
+                        <NavContent user={user} navigation={navigation.items} />
                     </div>
                 </OutsideClick>
             ) : (
                 <div className={navBarClass.join(' ')}>
-                    <NavContent navigation={navigation.items} />
+                    <NavContent user={user} navigation={navigation.items} />
                 </div>
             )}
         </nav>
