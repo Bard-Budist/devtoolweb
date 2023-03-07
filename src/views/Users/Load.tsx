@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Col, Row, Card, Form, Button, Table } from 'react-bootstrap';
 import { DropzoneComponent } from 'react-dropzone-component';
+import './Load.scss';
+import Select from 'react-select';
 
 const Load = () => {
     let djsConfig = {
@@ -38,14 +40,32 @@ const Load = () => {
                                     {' '}
                                     <Form.Group>
                                         <Form.Label>Institución</Form.Label>
-                                        <Form.Control as="select"></Form.Control>
+                                        <Select
+                                            defaultValue={[]}
+                                            isMulti
+                                            name="Institución"
+                                            options={[]}
+                                            className="select-load"
+                                            classNamePrefix="select"
+                                            isSearchable
+                                            placeholder="Seleccione una institución"
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col sm={12} lg={2} md={2}>
                                     {' '}
                                     <Form.Group>
                                         <Form.Label>Sede</Form.Label>
-                                        <Form.Control as="select"></Form.Control>
+                                        <Select
+                                            defaultValue={[]}
+                                            isMulti
+                                            name="Institución"
+                                            options={[]}
+                                            className="select-load"
+                                            classNamePrefix="select"
+                                            isSearchable
+                                            placeholder="Seleccione una sede"
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col sm={12} lg={2} md={12} className="text-center" style={{ alignSelf: 'center' }}>

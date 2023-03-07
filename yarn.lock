@@ -7730,11 +7730,6 @@ env-paths@^2.2.0:
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-2.2.1.tgz#420399d416ce1fbe9bc0a07c62fa68d67fd0f8f2"
   integrity sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==
 
-env-var@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/env-var/-/env-var-7.3.0.tgz#34c744ca8fe72b8b2a70509ab047a10e3ae44aae"
-  integrity sha512-qwtwYJ9d3XFxXRDudPEAMszaggpDgcfb1ZGYb9/cNyMugN2/a8EtviopnRL6c+petj2vp6/gxwYd9ExL1/iPcw==
-
 error-ex@^1.3.1:
   version "1.3.2"
   resolved "https://registry.npmjs.org/error-ex/-/error-ex-1.3.2.tgz"
@@ -8952,6 +8947,11 @@ functions-have-names@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
+
+fuse.js@^6.5.3:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.6.2.tgz#fe463fed4b98c0226ac3da2856a415576dc9a111"
+  integrity sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -13960,6 +13960,14 @@ react-scrolllock@^1.0.5:
   dependencies:
     create-react-class "^15.5.2"
     prop-types "^15.5.10"
+
+react-search-autocomplete@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/react-search-autocomplete/-/react-search-autocomplete-8.3.1.tgz#68cc9744639753642d904c576de9d06fba8f0c8a"
+  integrity sha512-T9c34oIbrjml4hFa0AgG89SeVGdQMF10E3LxBXFzJCXf+NFKL142P6UUYdL1QmCU4yJRI3QDaBDHVCAF6jpKeg==
+  dependencies:
+    fuse.js "^6.5.3"
+    styled-components "^5.3.3"
 
 react-select@^3.0.4:
   version "3.2.0"

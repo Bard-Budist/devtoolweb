@@ -9,14 +9,12 @@ interface NavRightProps {
     rtlLayout: boolean;
 }
 
-
 // Signout
 const signOut = (e: any) => {
     e.preventDefault();
     localStorage.removeItem('user');
-    window.location.href = '/login';
+    window.location.href = '/';
 };
-
 
 const NavRight = (props: NavRightProps) => {
     return (
@@ -34,7 +32,9 @@ const NavRight = (props: NavRightProps) => {
                                     <a href={DEMO.BLANK_LINK} className="m-r-10">
                                         Marcar como leido
                                     </a>
-                                    <a href={DEMO.BLANK_LINK} onClick={signOut}>Cerrar sesion</a>
+                                    <a href={DEMO.BLANK_LINK} onClick={signOut}>
+                                        Cerrar sesion
+                                    </a>
                                 </div>
                             </div>
                             <div style={{ height: '300px' }}>
