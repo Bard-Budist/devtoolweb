@@ -10,7 +10,7 @@ const Layout = () => {
     const layoutType = useSelector((state) => state.able.layoutType);
     const onChangeLayoutType = (layoutType: string) => dispatch({ type: actionTypes.LAYOUT_TYPE, layoutType: layoutType });
     const onReset = () => dispatch({ type: actionTypes.RESET });
-    let layoutOption = (
+    const layoutOption = (
         <div>
             <h6 className="text-dark">Layouts</h6>
             <div className="theme-color layout-type">

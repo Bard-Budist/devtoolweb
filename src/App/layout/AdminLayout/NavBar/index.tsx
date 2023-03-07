@@ -48,7 +48,7 @@ const NavBar = () => {
     if (collapseMenu) {
         toggleClass = [...toggleClass, 'on'];
     }
-    let mainLogo = logo;
+    const mainLogo = logo;
     let navHtml: React.ReactNode;
     if (!rightToggle && windowWidth < 992) {
         navHtml = '';

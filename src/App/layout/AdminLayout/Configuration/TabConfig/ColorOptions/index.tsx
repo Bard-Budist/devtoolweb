@@ -9,7 +9,7 @@ const ColorOptions = () => {
     const headerBackColor = useSelector((state) => state.able.headerBackColor);
     const onChangeHeaderBackColor = (headerBackColor: string) =>
         dispatch({ type: actionTypes.HEADER_BACK_COLOR, headerBackColor: headerBackColor });
-    let colorOptions = (
+    const colorOptions = (
         <div>
             <h6 className=" text-dark">Background Color</h6>
             <div className="theme-color background-color flat">

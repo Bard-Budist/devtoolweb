@@ -29,7 +29,7 @@ const NavContent = (props: NavContentProps) => {
         const sidenavWrapper = document.getElementById('sidenav-wrapper');
         if (sidenavWrapper) {
             const wrapperWidth = sidenavWrapper.clientWidth;
-            let scrollWidth = data.scrollWidth - wrapperWidth;
+            const scrollWidth = data.scrollWidth - wrapperWidth;
             if (scrollWidth < 0) {
                 setData({ ...data, scrollWidth: 0, prevDisable: true, nextDisable: false });
             } else {
@@ -105,7 +105,7 @@ const NavContent = (props: NavContentProps) => {
                 <PerfectScrollbar options={{ wheelSpeed: 2, swipeEasing: true }}>
                     <ul className="nav pcoded-inner-navbar" id="nav-ps-next">
                         {navItems}
-                        {/*<li>
+                        {/* <li>
                             <Card className="text-center">
                                 <Card.Body>
                                     <i className="feather icon-sunset f-40" />

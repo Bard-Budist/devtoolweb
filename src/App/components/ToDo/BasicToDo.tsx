@@ -42,7 +42,7 @@ const BasicToDo = (props: BasicToDoProps) => {
     };
 
     const handleErrorSubmit = (e: any, formData: any, errorInputs: any) => {
-        //console.log(errorInputs);
+        // console.log(errorInputs);
     };
 
     const deleteHandler = (key: number) => {

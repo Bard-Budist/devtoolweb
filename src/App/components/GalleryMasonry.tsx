@@ -30,14 +30,14 @@ const GalleryMasonry = (props: GalleryMasonryProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const mapChildren = () => {
-        let col: React.ReactNode[] = [];
+        const col: React.ReactNode[] = [];
         const numC = columns;
         for (let i = 0; i < numC; i++) {
             col.push([]);
         }
         return props.children.reduce((p, c, i) => {
             if (Array.isArray(p)) {
-                let v = p[i % numC];
+                const v = p[i % numC];
                 if (Array.isArray(v)) v.push(c);
             }
             return p;

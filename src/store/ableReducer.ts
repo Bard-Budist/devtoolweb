@@ -4,8 +4,8 @@ import config from './../config';
 import { ACTIONTYPE } from './actions';
 
 export const initialState = {
-    isOpen: [] as string[], //for active default menu
-    isTrigger: [] as string[], //for active default menu, set blank for horizontal
+    isOpen: [] as string[], // for active default menu
+    isTrigger: [] as string[], // for active default menu, set blank for horizontal
     ...config
 };
 

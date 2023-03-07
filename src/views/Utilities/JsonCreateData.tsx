@@ -6,13 +6,11 @@ import { ProductInterface } from './Interfaces/updateCheckpointInterfaces';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { localDataDir, join } from '@tauri-apps/api/path';
-import { invoke } from '@tauri-apps/api/tauri'
-
+import { invoke } from '@tauri-apps/api/tauri';
 
 export const JsonCreateData = () => {
     const [products, setProducts] = React.useState<ProductInterface[]>([]);
     const [currentProduct, setCurrentProduct] = React.useState<string>('');
-  
 
     const sweetAlertHandler = (alert: {
         title: string;
@@ -33,7 +31,7 @@ export const JsonCreateData = () => {
             apiAuth.get('/user/products/' + GetUser()?.id).then((response) => {
                 setProducts(response.data);
             });
-        }  
+        }
     }, []);
 
     // function to create json in path file
@@ -52,17 +50,25 @@ export const JsonCreateData = () => {
         // Create file
         localDataDir().then((pathLocal: string) => {
             const pathLocalSplited = pathLocal.split('\\');
-            join(pathLocalSplited[0], pathLocalSplited[1], pathLocalSplited[2], pathLocalSplited[3], 'LocalLow', 'Selecu', 'data.json').then((pathJoined: string) => {
-               invoke('save_json_file', { path: pathJoined, content: JSON.stringify(payloadBody)}).then(() => {
-                sweetAlertHandler({ title: 'Archivo creado', type: 'success', text: 'Se ha creado el archivo satisfactoriamente' });
-                }).catch((err) => {
+            join(pathLocalSplited[0], pathLocalSplited[1], pathLocalSplited[2], pathLocalSplited[3], 'LocalLow', 'Selecu', 'data.json')
+                .then((pathJoined: string) => {
+                    invoke('save_json_file', { path: pathJoined, content: JSON.stringify(payloadBody) })
+                        .then(() => {
+                            sweetAlertHandler({
+                                title: 'Archivo creado',
+                                type: 'success',
+                                text: 'Se ha creado el archivo satisfactoriamente'
+                            });
+                        })
+                        .catch((err) => {
+                            sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'No se ha podido crear el archivo' });
+                        });
+                })
+                .catch((err) => {
                     sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'No se ha podido crear el archivo' });
                 });
-            }).catch((err) => {
-                sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: 'No se ha podido crear el archivo' });
-            }); 
         });
-    }
+    };
     return (
         <>
             <Row>

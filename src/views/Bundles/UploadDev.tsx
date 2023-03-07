@@ -27,12 +27,12 @@ export const AssetsUploadDev = () => {
         });
     };
 
-    let djsConfig = {
+    const djsConfig = {
         addRemoveLinks: true,
         autoProcessQueue: false,
         uploadMultiple: false
     };
-    let componentConfig = {
+    const componentConfig = {
         showFiletypeIcon: true,
         postUrl: 'no-url'
     };
@@ -93,7 +93,7 @@ export const AssetsUploadDev = () => {
                             }
                         }
                     ).on('httpUploadProgress', (progress) => {
-                        let percent = (progress.loaded * 100) / progress.total;
+                        const percent = (progress.loaded * 100) / progress.total;
                         dropzone.emit('uploadprogress', dropzone.files[i], percent, progress.loaded);
                     });
                 }

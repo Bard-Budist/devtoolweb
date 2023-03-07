@@ -43,7 +43,7 @@ const CardToDo = (props: CardToDoProps) => {
     };
 
     const handleErrorSubmit = (e: any, formData: any, errorInputs: any) => {
-        //console.log(errorInputs);
+        // console.log(errorInputs);
     };
 
     const completeStyle: React.CSSProperties = {

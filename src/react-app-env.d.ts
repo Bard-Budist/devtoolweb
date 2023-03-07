@@ -1,4 +1,4 @@
-/// <reference types="react-scripts" />
+// / <reference types="react-scripts" />
 declare module 'feather-icons-react';
 declare module 'react-image-video-lightbox';
 declare module 'rodal';

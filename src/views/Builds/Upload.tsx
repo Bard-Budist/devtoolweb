@@ -26,13 +26,13 @@ export const BuildUpload = () => {
     };
 
     let dropzone: any;
-    let djsConfig = {
+    const djsConfig = {
         addRemoveLinks: true,
         acceptedFiles: '.zip',
         autoProcessQueue: false,
         uploadMultiple: false
     };
-    let componentConfig = {
+    const componentConfig = {
         iconFiletypes: ['.zip'],
         showFiletypeIcon: true,
         postUrl: 'no-url'
@@ -69,7 +69,7 @@ export const BuildUpload = () => {
                             }
                         }
                     ).on('httpUploadProgress', (progress) => {
-                        let percent = (progress.loaded * 100) / progress.total;
+                        const percent = (progress.loaded * 100) / progress.total;
                         dropzone.emit('uploadprogress', dropzone.files[i], percent, progress.loaded);
                     });
                 }
@@ -107,7 +107,7 @@ export const BuildUpload = () => {
                                     </Form.Group>
                                 </Col>
                                 <Col md={6}>
-                                    {/*<Form.Group>
+                                    {/* <Form.Group>
                                         <Form.Label>Temporada</Form.Label>
                                         <Form.Control as="select">
                                             <option>T2</option>

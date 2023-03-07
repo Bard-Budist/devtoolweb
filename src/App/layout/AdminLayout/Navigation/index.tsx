@@ -76,7 +76,7 @@ const Navigation = () => {
         }
         if (navFixedLayout && !headerFixedLayout) {
             window.addEventListener('scroll', scroll, true);
-            /*window.scrollTo(0, 0);*/
+            /* window.scrollTo(0, 0);*/
         } else {
             window.removeEventListener('scroll', scroll, false);
         }

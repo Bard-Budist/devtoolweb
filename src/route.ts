@@ -9,8 +9,6 @@ export interface RouteObject {
 
 const Login = React.lazy(() => import('./views/Login/Login'));
 
-const route: RouteObject[] = [
-    { path: '/', exact: true, name: 'Default', component: Login},
-];
+const route: RouteObject[] = [{ path: '/', exact: true, name: 'Default', component: Login }];
 
 export default route;

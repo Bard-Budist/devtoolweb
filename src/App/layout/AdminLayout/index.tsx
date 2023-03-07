@@ -13,7 +13,7 @@ import useWindowSize from '../../../hooks/useWindowSize';
 import * as actionTypes from '../../../store/actions';
 import { useSelector } from '../../../store/reducer';
 
-//import '../../../app.scss';
+// import '../../../app.scss';
 const AdminLayout = () => {
     const { windowWidth } = useWindowSize();
     const dispatch = useDispatch();

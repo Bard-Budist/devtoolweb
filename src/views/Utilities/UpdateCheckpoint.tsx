@@ -59,7 +59,6 @@ export const UpdateCheckpoint = () => {
             .catch((error) => {
                 sweetAlertHandler({ title: '¡Algo salio mal!', type: 'error', text: error.message });
             });
-    
     };
 
     // parse checkpoint to list of integers
@@ -77,7 +76,7 @@ export const UpdateCheckpoint = () => {
             <Row>
                 <Col sm={12}>
                     <br />
-                    <h5 className='mt-4'>Configuración</h5>
+                    <h5 className="mt-4">Configuración</h5>
                     <CardDeck>
                         <Card>
                             <Card.Header>
@@ -87,7 +86,7 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Temporada</Form.Label>
                                     <Form.Control
-                                        as='select'
+                                        as="select"
                                         value={currentEnvironment}
                                         onChange={(event) => {
                                             setCurrentEnvironment(event.target.value);
@@ -99,7 +98,7 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer>
-                                <small className='text-muted'>Aquí debes poner a que entorno esta dirigido</small>
+                                <small className="text-muted">Aquí debes poner a que entorno esta dirigido</small>
                             </Card.Footer>
                         </Card>
                         <Card>
@@ -110,7 +109,7 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Temporada</Form.Label>
                                     <Form.Control
-                                        as='select'
+                                        as="select"
                                         value={currentProduct}
                                         onChange={(event) => {
                                             setCurrentProduct(event.target.value);
@@ -124,13 +123,13 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer>
-                                <small className='text-muted'>Tu producto al que actualizaras</small>
+                                <small className="text-muted">Tu producto al que actualizaras</small>
                             </Card.Footer>
                         </Card>
                     </CardDeck>
                 </Col>
                 <Col sm={12}>
-                    <h5 className='mt-4'>Checkpoint</h5>
+                    <h5 className="mt-4">Checkpoint</h5>
                     <hr />
                     <CardDeck>
                         <Card>
@@ -141,8 +140,8 @@ export const UpdateCheckpoint = () => {
                                 <Form.Group>
                                     <Form.Label>Interacción</Form.Label>
                                     <Form.Control
-                                        type='text'
-                                        placeholder='Ejemplo: 3.1.1.1'
+                                        type="text"
+                                        placeholder="Ejemplo: 3.1.1.1"
                                         value={checkpoint}
                                         onChange={(event) => {
                                             setCheckpoint(event.target.value);
@@ -151,13 +150,13 @@ export const UpdateCheckpoint = () => {
                                 </Form.Group>
                             </Card.Body>
 
-                            <Row className='text-center m-t-10'>
+                            <Row className="text-center m-t-10">
                                 <Col>
                                     <Button onClick={updateCheckpoint}>Subir</Button>
                                 </Col>
                             </Row>
                             <Card.Footer>
-                                <small className='text-muted'>El primer numero corresponde a la temporada</small>
+                                <small className="text-muted">El primer numero corresponde a la temporada</small>
                             </Card.Footer>
                         </Card>
                     </CardDeck>

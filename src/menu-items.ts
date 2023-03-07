@@ -23,10 +23,7 @@ const chartData: { items: MenuItemType[] } = {
             title: 'Usuario',
             type: 'group',
             icon: 'icon-award',
-            roles: [
-                'Admin',
-                'Development',
-            ],
+            roles: ['Admin', 'Development'],
             children: [
                 {
                     id: 'user-profile',
@@ -35,11 +32,8 @@ const chartData: { items: MenuItemType[] } = {
                     url: '/user/profile',
                     classes: 'nav-item',
                     icon: 'feather icon-user',
-                    roles: [
-                        'Admin',
-                        'Development',
-                    ]
-                },
+                    roles: ['Admin', 'Development']
+                }
             ]
         },
         {
@@ -55,7 +49,7 @@ const chartData: { items: MenuItemType[] } = {
                     type: 'item',
                     url: '/utilities/updatecheckpoint',
                     classes: 'nav-item',
-                    icon: 'feather icon-award',
+                    icon: 'feather icon-award'
                 },
                 {
                     id: 'utils-data-json',
@@ -64,8 +58,7 @@ const chartData: { items: MenuItemType[] } = {
                     url: '/utilities/createJson',
                     classes: 'nav-item',
                     icon: 'feather icon-award'
-                },
-                
+                }
             ]
         },
         {
@@ -73,9 +66,7 @@ const chartData: { items: MenuItemType[] } = {
             title: 'Assets Bundles',
             type: 'group',
             icon: 'icon-award',
-            roles: [
-                'Development',
-            ],
+            roles: ['Development'],
             children: [
                 {
                     id: 'dev-bundles-prod',
@@ -100,9 +91,7 @@ const chartData: { items: MenuItemType[] } = {
             title: 'Usuarios',
             type: 'group',
             icon: 'icon-award',
-            roles: [
-                'Admin',
-            ],
+            roles: ['Admin'],
             children: [
                 {
                     id: 'users-create-list',
@@ -111,10 +100,9 @@ const chartData: { items: MenuItemType[] } = {
                     url: '/user/load',
                     classes: 'nav-item',
                     icon: 'feather icon-user'
-                },
+                }
             ]
-        },
+        }
     ]
-    
 };
 export default chartData;
