@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "types": ["react/experimental"],
+        "types": ["react/experimental", "node"],
         "target": "esnext",
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,

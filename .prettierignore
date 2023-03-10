@@ -3,5 +3,4 @@ node_modules/
 .vscode/
 .github/
 build/
-src/assets/
 public/

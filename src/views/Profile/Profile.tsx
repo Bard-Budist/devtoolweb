@@ -119,8 +119,8 @@ const UserProfile = () => {
                                             }}
                                         >
                                             <option>Seleccione el producto</option>
-                                            {products.map((product) => {
-                                                return <option>{product.name}</option>;
+                                            {products.map((product, i) => {
+                                                return <option key={i}>{product.name}</option>;
                                             })}
                                         </Form.Control>
                                     </Form.Group>

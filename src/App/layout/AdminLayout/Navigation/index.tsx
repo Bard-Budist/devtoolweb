@@ -34,7 +34,7 @@ const Navigation = () => {
             }
         }
     };
-    React.useEffect(() => {}, []);
+
     useEffect(() => {
         resize();
         window.addEventListener('resize', resize);

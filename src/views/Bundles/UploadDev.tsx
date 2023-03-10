@@ -5,7 +5,7 @@ import { forage } from '@tauri-apps/tauri-forage';
 import { DropzoneComponent } from 'react-dropzone-component';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { writeText, readText } from '@tauri-apps/api/clipboard';
+import { writeText } from '@tauri-apps/api/clipboard';
 import { useEffect } from 'react';
 
 let dropzone: any;
