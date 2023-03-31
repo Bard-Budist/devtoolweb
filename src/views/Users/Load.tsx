@@ -22,6 +22,8 @@ interface studentsLoad {
   Email: string
   Usuario: string
   Contraseña: string
+  'Numero Grupo': string
+  Grado: string
 }
 
 let dropzone: any
@@ -39,7 +41,7 @@ const Load = () => {
 
   const [productsSelected, setProductsSelected] = React.useState<number[]>([])
   const [sitesSelected, setSitesSelected] = React.useState<number>(0)
-  const [roleSelected, setRoleSelected] = React.useState<string>('')
+  const [roleSelected, setRoleSelected] = React.useState<string>('Student')
   const [studentsLoad, setStudentsLoad] = React.useState<studentsLoad[]>([])
   const [mentorSelected, setMentorSelected] = React.useState<number[]>([])
   const [groupNumber, setGroupNumber] = React.useState<string>('')
@@ -168,6 +170,8 @@ const Load = () => {
         skipEmptyLines: true,
         complete: function (results: any) {
           const students: studentsLoad[] = results.data
+          setNameGroup(students[0].Grado)
+          setGroupNumber(students[0]['Numero Grupo'])
           setStudentsLoad(students)
           dropzone.emit('complete', dropzone.files[i])
         },
@@ -248,10 +252,10 @@ const Load = () => {
         setMentorSelected([])
         setGroupNumber('')
         setNameGroup('')
-        setRoleSelected('')
-        setProductsSelected([])
         setInstitutionId(0)
         setSitesSelected(0)
+        setProductsSelected([])
+
         const studentsClipboard = students.map((student: any) => {
           const newStudent: any = {}
           newStudent.usuario = student.username
@@ -321,7 +325,7 @@ const Load = () => {
             </Card.Header>
             <Card.Body>
               <Row>
-                <Col sm={3} lg={3} md={3}>
+                {/* <Col sm={3} lg={3} md={3}>
                   {' '}
                   <Form.Group>
                     <Form.Label>Rol</Form.Label>
@@ -336,7 +340,7 @@ const Load = () => {
                       <option>Student</option>
                     </Form.Control>
                   </Form.Group>
-                </Col>
+                </Col> */}
                 <Col sm={8} lg={4} md={6}>
                   {' '}
                   <Form.Group>
@@ -353,7 +357,7 @@ const Load = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col sm={12} lg={2} md={2}>
+                <Col sm={12} lg={4} md={4}>
                   {institutionId !== 0 && (
                     <Form.Group>
                       <Form.Label>Sede</Form.Label>
@@ -387,7 +391,7 @@ const Load = () => {
                     </Form.Group>
                   )}
                 </Col>
-                <Col sm={12} lg={3} md={12} className='text-center' style={{ alignSelf: 'center' }}>
+                <Col sm={12} lg={4} md={12} className='text-center' style={{ alignSelf: 'center' }}>
                   <Button
                     variant='primary'
                     onClick={() => {
@@ -406,7 +410,7 @@ const Load = () => {
                   </Button>
                 </Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <Col sm={7} lg={9} md={7}>
                   {' '}
                   <Form.Group>
@@ -445,10 +449,10 @@ const Load = () => {
                     Crear mentor
                   </Button>
                 </Col>
-              </Row>
+              </Row> */}
               <hr />
               <Row>
-                <Col sm={2}>
+                {/* <Col sm={2}>
                   <Form.Group>
                     <Form.Label>Numero de grupo</Form.Label>
                     <Form.Control
@@ -471,8 +475,8 @@ const Load = () => {
                       }}
                     ></Form.Control>
                   </Form.Group>
-                </Col>
-                <Col sm={6}>
+                </Col> */}
+                <Col sm={12}>
                   <Form.Group>
                     <Form.Label>Productos</Form.Label>
                     <Select
@@ -497,6 +501,7 @@ const Load = () => {
                   </Form.Group>
                 </Col>
               </Row>
+              <hr />
               <Row>
                 <Col sm={12} className='text-center' style={{ alignSelf: 'center' }}>
                   <DropzoneComponent
